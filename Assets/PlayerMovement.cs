@@ -32,6 +32,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
+            Debug.Log(isJumping);
         }
     }
 
@@ -40,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
         if (other.gameObject.CompareTag("Ground"))
         {
             isJumping = true;
+            Debug.Log(isJumping);
         }
     }
 }
