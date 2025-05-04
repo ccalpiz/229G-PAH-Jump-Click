@@ -72,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
         //        isJumping = true;
         //    }
         //}
-}
+    }
 
     Vector2 CalculateProjectileVelocity(Vector2 origin, Vector2 target, float time)
     {
