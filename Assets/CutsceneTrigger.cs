@@ -9,6 +9,7 @@ public class CutsceneTrigger : MonoBehaviour
     public GameObject cutsceneUI;
     public float fadeDuration = 1.5f;
     public float cutsceneDuration = 3f;
+    public AudioSource cutsceneAudio;
 
     private bool triggered = false;
 
@@ -27,6 +28,9 @@ public class CutsceneTrigger : MonoBehaviour
 
         yield return StartCoroutine(FadeToBlack());
 
+        if (cutsceneAudio != null)
+            cutsceneAudio.Play();
+
         if (cutsceneUI != null)
             cutsceneUI.SetActive(true);
 
@@ -37,6 +41,19 @@ public class CutsceneTrigger : MonoBehaviour
 
         Time.timeScale = 1f;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    void StartCutscene()
+    {
+        GameObject bgm = GameObject.FindWithTag("BGM");
+        if (bgm != null)
+        {
+            AudioSource bgmSource = bgm.GetComponent<AudioSource>();
+            if (bgmSource != null)
+            {
+                bgmSource.Stop();
+            }
+        }
     }
 
     IEnumerator FadeToBlack()
