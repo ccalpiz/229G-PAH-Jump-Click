@@ -1,13 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI hpText;
+    public Image[] hpIcons; // Assign in inspector
 
     public void UpdateHP(int currentHP, int maxHP)
     {
-        hpText.text = "HP: " + currentHP + "/" + maxHP;
+        for (int i = 0; i < hpIcons.Length; i++)
+        {
+            hpIcons[i].enabled = i < currentHP;
+        }
     }
 }
