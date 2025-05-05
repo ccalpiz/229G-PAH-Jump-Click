@@ -15,11 +15,15 @@ public class PlayerController : MonoBehaviour
     private float chargeTime = 0f;
     private bool isCharging = false;
     private Rigidbody2D rb2d;
+    private UIManager uiManager;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         currentHP = maxHP;
+
+        uiManager = FindObjectOfType<UIManager>();
+        uiManager.UpdateHP(currentHP, maxHP);
     }
 
     void Update()
@@ -117,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         currentHP -= amount;
         Debug.Log("HP: " + currentHP);
+        uiManager.UpdateHP(currentHP, maxHP);
 
         if (currentHP <= 0)
         {
